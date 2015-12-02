@@ -1,11 +1,10 @@
 package com.mayaliu.codeadvent.day1;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
  * @author MayaYL
@@ -21,7 +20,9 @@ import org.apache.commons.lang3.StringUtils;
  *
  */
 public class FloorCount {
-
+	
+	public static final String USAGE = String.format("Usage:%njava FloorCount [input]/[file location]");
+	
 	/**
 	 * @param args
 	 *   The string or file path containing Santa's instructions.
@@ -34,13 +35,13 @@ public class FloorCount {
 		// Print usage if there are no arguments, or if the "help" option is 
 		// specified.
 		if (args.length != 1) {
-			printUsage();
+			CommonUtils.printUsage(USAGE);
 		}
 		
 		String input = args[0];
 		
 		if (input == "--help" || input == "-h") {
-			printUsage();
+			CommonUtils.printUsage(USAGE);
 		}
 		
 		// Input validation.
@@ -52,20 +53,9 @@ public class FloorCount {
 		String instructions = input;
 		
 		// If input is a file, use its contents as the instructions string.
-		boolean isFile = new File(input).isFile();
+		boolean isFile = CommonUtils.isFile(input);
 		if (isFile) {
-			FileInputStream inputStream = null;
-			try {
-				inputStream = new FileInputStream(input);
-				instructions = IOUtils.toString(inputStream).trim();
-				inputStream.close();
-			} catch (IOException e) {
-				System.err.format("An error has occurred while processing file %s.%n", input);
-				if (inputStream != null) {
-				    inputStream.close();
-				}
-				System.exit(1);
-			}
+			instructions = CommonUtils.getDataFromFile(input);
 		}
 		
 		// Parse and calculate floors.
@@ -94,15 +84,6 @@ public class FloorCount {
 		
 		System.out.format("Santa is on floor %d.%n", floor);
 		System.out.format("Santa first went to the basement at index %d.%n", firstIndexOfBasement);
-	}
-	
-	/**
-	 * Prints out the usage and exits with an error.
-	 */
-	private static void printUsage() {
-		// Print out usage.
-		System.out.format("Usage:%njava FloorCount [input]/[file location]%n");
-		System.exit(1);
 	}
 
 }
