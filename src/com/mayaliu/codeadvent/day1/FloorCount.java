@@ -2,6 +2,10 @@ package com.mayaliu.codeadvent.day1;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
+
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author MayaYL
@@ -21,8 +25,12 @@ public class FloorCount {
 	/**
 	 * @param args
 	 *   The string or file path containing Santa's instructions.
+	 *   
+	 * @throws IOException 
+	 *   Thrown if a file is provided and there were problems with opening or 
+	 *   reading it.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// Print usage if there are no arguments, or if the "help" option is 
 		// specified.
 		if (args.length != 1) {
@@ -36,36 +44,37 @@ public class FloorCount {
 		}
 		
 		// Input validation.
-		// TODO: use apache common
-		if (input == null || input.length() == 0) {
+		if (StringUtils.isEmpty(input)) {
 			System.err.println("The input cannot be empty. Please provide either a string or a file name.");
 			System.exit(1);
 		}
 		
-		String instructions;
+		String instructions = input;
 		
-		// If input is a file.
+		// If input is a file, use its contents as the instructions string.
 		boolean isFile = new File(input).isFile();
 		if (isFile) {
-//			File file = new File(input);
-//			FileInputStream inputStream = new FileInputStream(input);
-//			try {
-//				instructions = IOUtils.toString(inputStream);
-//			} finally {
-//			    inputStream.close();
-//			}
-		}
-		else {
-			instructions = input;
+			FileInputStream inputStream = null;
+			try {
+				inputStream = new FileInputStream(input);
+				instructions = IOUtils.toString(inputStream).trim();
+				inputStream.close();
+			} catch (IOException e) {
+				System.err.format("An error has occurred while processing file %s.%n", input);
+				if (inputStream != null) {
+				    inputStream.close();
+				}
+				System.exit(1);
+			}
 		}
 		
 		// Parse and calculate floors.
 		int floor = 0;
 		int firstIndexOfBasement = -1;
-		char[] inputArray = input.toCharArray();
+		char[] instructionsArray = instructions.toCharArray();
 		
-		for (int i = 0; i<inputArray.length; i++) {
-			char currentChar = inputArray[i];
+		for (int i = 0; i<instructionsArray.length; i++) {
+			char currentChar = instructionsArray[i];
 			
 			if (currentChar == '(') {
 				floor++;
@@ -75,6 +84,7 @@ public class FloorCount {
 			}
 			else {
 				System.err.format("Invalid character %s encountered.%n", currentChar);
+				System.exit(1);
 			}
 			
 			if (floor < 0 && firstIndexOfBasement == -1) {
