@@ -12,8 +12,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  * 
  * Solution for adventofcode's Day 2 puzzle, December 2015. See 
  * http://adventofcode.com/day/2
- * 
- * 
  */
 public class WrappingPaperCalculator {
 
