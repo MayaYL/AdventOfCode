@@ -22,7 +22,7 @@ public class LightDirectionsPart2 {
 	
 	/**
 	 * @param args
-	 *   The string or file path containing the list of words.
+	 *   The string or file path containing the list of directions.
 	 *   
 	 * @throws IOException 
 	 *   Thrown if a file is provided and there were problems with opening or 
