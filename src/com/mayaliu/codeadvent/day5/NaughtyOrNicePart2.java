@@ -14,7 +14,7 @@ import com.mayaliu.codeadvent.common.CommonUtils;
 /**
  * @author MayaYL
  * 
- * Solution for adventofcode's Day 5 puzzle, December 2015. See 
+ * Solution for part 2 of adventofcode's Day 5 puzzle, December 2015. See 
  * http://adventofcode.com/day/5
  */
 public class NaughtyOrNicePart2 {
