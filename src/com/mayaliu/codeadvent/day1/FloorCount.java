@@ -32,31 +32,7 @@ public class FloorCount {
 	 *   reading it.
 	 */
 	public static void main(String[] args) throws IOException {
-		// Print usage if there are no arguments, or if the "help" option is 
-		// specified.
-		if (args.length != 1) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String input = args[0];
-		
-		if (input == "--help" || input == "-h") {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		// Input validation.
-		if (StringUtils.isEmpty(input)) {
-			System.err.println("The input cannot be empty. Please provide either a string or a file name.");
-			System.exit(1);
-		}
-		
-		String instructions = input;
-		
-		// If input is a file, use its contents as the instructions string.
-		boolean isFile = CommonUtils.isFile(input);
-		if (isFile) {
-			instructions = CommonUtils.getDataFromFile(input);
-		}
+		String instructions = CommonUtils.processInput(args, "Matchsticks");
 		
 		// Parse and calculate floors.
 		int floor = 0;

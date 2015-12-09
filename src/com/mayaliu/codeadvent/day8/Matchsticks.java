@@ -22,34 +22,12 @@ public class Matchsticks {
 	/**
 	 * @param args
 	 *   The string or file path containing the list of instructions.
+	 *   
 	 * @throws Exception 
 	 * @throws NumberFormatException 
 	 */
 	public static void main(String[] args) throws NumberFormatException, Exception {
-		// Print usage if there are no arguments, or if the "help" option is 
-		// specified.
-		if (args.length != 1) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String input = args[0];
-		
-		if (input == "--help" || input == "-h") {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		// Input validation.
-		if (StringUtils.isEmpty(input)) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String stringList = input;
-		
-		// If input is a file, use its contents as the word list string.
-		boolean isFile = CommonUtils.isFile(input);
-		if (isFile) {
-			stringList = CommonUtils.getDataFromFile(input);
-		}
+		String stringList = CommonUtils.processInput(args, "Matchsticks");
 		
 		String[] strings = stringList.split("\n");
 		int originalLength = 0;

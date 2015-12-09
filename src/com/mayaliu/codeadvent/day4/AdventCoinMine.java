@@ -30,31 +30,9 @@ public class AdventCoinMine {
 	 *   Thrown if there is an error with the MD5 hash call.
 	 */
 	public static void main(String[] args) throws IOException, NoSuchAlgorithmException {
-		// Print usage if there are no arguments, or if the "help" option is 
-		// specified.
-		if (args.length != 1) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String input = args[0];
-		
-		if (input == "--help" || input == "-h") {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		// Input validation.
-		if (StringUtils.isEmpty(input)) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String root = input;
-		
-		// If input is a file, use its contents as the instructions string.
-		boolean isFile = CommonUtils.isFile(input);
-		if (isFile) {
-			root = CommonUtils.getDataFromFile(input);
-		}
+		String root = CommonUtils.processInput(args, "AdventCoinMine");
     	
+		// TODO: actually make the nubmer of zeros configurable.
         int answer = findInteger(6, root);
         System.out.format("The number to append for %d zeros is %d", 6, answer);
 	}

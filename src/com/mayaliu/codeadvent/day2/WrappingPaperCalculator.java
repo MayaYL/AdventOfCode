@@ -26,31 +26,9 @@ public class WrappingPaperCalculator {
 	 *   reading it.
 	 */
 	public static void main(String[] args) throws IOException {
-		// Print usage if there are no arguments, or if the "help" option is 
-		// specified.
-		if (args.length != 1) {
-			CommonUtils.printUsage(USAGE);
-		}
+		String dimensionsList = CommonUtils.processInput(args, "WrappingPaperCalculator");
 		
-		String input = args[0];
-		
-		if (input == "--help" || input == "-h") {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		// Input validation.
-		if (StringUtils.isEmpty(input)) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String[] dimensions = input.split("\\s+");
-		
-		// If input is a file, use its contents as the instructions string.
-		boolean isFile = CommonUtils.isFile(input);
-		if (isFile) {
-			String data = CommonUtils.getDataFromFile(input);
-			dimensions = data.split("\\s+");
-		}
+		String[] dimensions = dimensionsList.split("\\s+");
 		
 		int totalArea = 0;
 		int totalRibbonLength = 0;

@@ -29,30 +29,7 @@ public class LightDirectionsPart2 {
 	 *   reading it.
 	 */
 	public static void main(String[] args) throws IOException {
-		// Print usage if there are no arguments, or if the "help" option is 
-		// specified.
-		if (args.length != 1) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String input = args[0];
-		
-		if (input == "--help" || input == "-h") {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		// Input validation.
-		if (StringUtils.isEmpty(input)) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String instructionLines = input;
-		
-		// If input is a file, use its contents as the word list string.
-		boolean isFile = CommonUtils.isFile(input);
-		if (isFile) {
-			instructionLines = CommonUtils.getDataFromFile(input);
-		}
+		String instructionLines = CommonUtils.processInput(args, "LightDirections2");
 		
 		double[][] lights = new double[1000][1000];
 		String[] rawInstructions = instructionLines.split("\n");

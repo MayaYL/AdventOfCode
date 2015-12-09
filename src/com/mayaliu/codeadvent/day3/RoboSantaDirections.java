@@ -28,30 +28,7 @@ public class RoboSantaDirections {
 	 *   reading it.
 	 */
 	public static void main(String[] args) throws IOException {
-		// Print usage if there are no arguments, or if the "help" option is 
-		// specified.
-		if (args.length != 1) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String input = args[0];
-		
-		if (input == "--help" || input == "-h") {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		// Input validation.
-		if (StringUtils.isEmpty(input)) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String instructions = input;
-		
-		// If input is a file, use its contents as the instructions string.
-		boolean isFile = CommonUtils.isFile(input);
-		if (isFile) {
-			instructions = CommonUtils.getDataFromFile(input);
-		}
+		String instructions = CommonUtils.processInput(args, "RoboSantaDirections");
 
 		HashSet<List<Integer>> visited = new HashSet<List<Integer>>();
 		char[] instructionChars = instructions.toCharArray();

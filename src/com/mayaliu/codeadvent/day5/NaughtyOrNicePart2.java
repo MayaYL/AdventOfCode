@@ -30,30 +30,7 @@ public class NaughtyOrNicePart2 {
 	 *   reading it.
 	 */
 	public static void main(String[] args) throws IOException {
-		// Print usage if there are no arguments, or if the "help" option is 
-		// specified.
-		if (args.length != 1) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String input = args[0];
-		
-		if (input == "--help" || input == "-h") {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		// Input validation.
-		if (StringUtils.isEmpty(input)) {
-			CommonUtils.printUsage(USAGE);
-		}
-		
-		String wordList = input;
-		
-		// If input is a file, use its contents as the word list string.
-		boolean isFile = CommonUtils.isFile(input);
-		if (isFile) {
-			wordList = CommonUtils.getDataFromFile(input);
-		}
+		String wordList = CommonUtils.processInput(args, "NaughtyOrNicePart2");
 		
 		String[] words = wordList.split("\n");
 		int numNiceWords = 0;
