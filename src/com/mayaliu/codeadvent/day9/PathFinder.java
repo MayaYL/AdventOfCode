@@ -15,6 +15,7 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  * http://adventofcode.com/day/9
  */
 public class PathFinder {
+	public static HashMap<String, PriorityQueue<Destination>> destinations;
 	
 	/**
 	 * @param args
@@ -25,72 +26,81 @@ public class PathFinder {
 	 */
 	public static void main(String[] args) throws NumberFormatException, Exception {
 		String pathList = CommonUtils.processInput(args, "PathFinder");
+		// Indicates whether we are finding the longest or shortest path.
+		boolean shortest = true;
 		
 		String[] paths = pathList.split("\n");
-		HashMap<String, Location> locations = new HashMap<String, Location>();
+		destinations = new HashMap<String, PriorityQueue<Destination>>();
 		
 		// Parse out and store the path data.
 		for (String path : paths) {
-			Location from, to;
+			Destination from;
+			Destination to;
 			
 			String[] pathParts = path.split(" [(to)=]*( )*");
 			String fromName = pathParts[0];
 			String toName = pathParts[1];
 			int distance = Integer.parseInt(pathParts[2]);
 			
-			from = locations.containsKey(fromName) ? locations.get(fromName) : new Location(fromName);
-			to = locations.containsKey(toName) ? locations.get(toName) : new Location(toName);
-			from.addDestination(to, distance);
-			to.addDestination(from, distance);
+			PriorityQueue<Destination> fromsDestinations = destinations.get(fromName);
+			if (fromsDestinations == null) {
+				fromsDestinations = new PriorityQueue<Destination>();
+			}
+			PriorityQueue<Destination> tosDestinations = destinations.get(toName);
+			if (tosDestinations == null) {
+				tosDestinations = new PriorityQueue<Destination>();
+			}
 			
-			locations.put(fromName, from);
-			locations.put(toName, to);
+			from = new Destination(fromName, shortest);
+			to = new Destination(toName, shortest);
+
+			from.setDistance(distance);
+			to.setDistance(distance);
+			fromsDestinations.add(to);
+			tosDestinations.add(from);
+			
+			destinations.put(fromName, fromsDestinations);
+			destinations.put(toName, tosDestinations);
 		}
 		
-		int minDistance = Integer.MAX_VALUE;
+		int currentBestRoute = shortest? Integer.MAX_VALUE : Integer.MIN_VALUE;
 		
-		for (Location loc : locations.values()) {
-			System.out.println("starting from "+loc.getName());
-			Location currentLocation = loc;
-			
-			int newDistance = visit(currentLocation, new HashMap<String, Location>(), 0);
-			System.out.println("***new distance: "+newDistance);
-			minDistance = minDistance < newDistance ? minDistance : newDistance;
-			System.out.println("***min distance: "+minDistance);
+		for (String currentLocation : destinations.keySet()) {			
+			int newDistance = visit(currentLocation, new ArrayList<String>(), 0);
+			if (shortest) {
+				currentBestRoute = currentBestRoute < newDistance ? currentBestRoute : newDistance;
+			}
+			else {
+				currentBestRoute = currentBestRoute > newDistance ? currentBestRoute : newDistance;
+			}
 		}
 		
-		System.out.format("The Shortest distance Santa can travel to visit all locations is %d.\n", minDistance);
+		System.out.format("The %s distance Santa can travel to visit all locations is %d.\n", shortest ? "shortest" : "longest", currentBestRoute);
 	}
 	
 	// end case: all cities have been visited
-	// step: visit closest city, mark it as visited, increment total distance
-	// move to next step: take closest city not visited, call w/ new total distance
-	private static int visit(Location current, HashMap<String, Location> visited, int distance) {
+	// step: visit next optimal city, mark it as visited, increment total distance
+	// move to next step: take first city not visited, call w/ new total distance
+	private static int visit(String current, ArrayList<String> visited, int distance) {
 		if (current == null) {
 			return distance;
 		}
 		
 		else {
-//			System.out.println("visiting " + current.getName());
-			visited.put(current.getName(), current);
-			PriorityQueue<Location> nextDestinations = current.getDestinations();
-			Location next;
+			visited.add(current);
+			PriorityQueue<Destination> nextDestinations = new PriorityQueue<Destination>();
+			nextDestinations.addAll(destinations.get(current));
+			Destination next;
 			
 			do {
 				next = nextDestinations.poll();
-			} while (next != null && visited.containsKey(next.getName()));
+			} while (next != null && visited.contains(next.getName()));
 			
 			if (next == null) {
-//				System.out.println("last visited: " + current.getName());
 				return distance;
 			}
-			
 
-//			System.out.println("visiting next: " + next.getName());
-//			System.out.println("distance to next: "+next.getDistanceFromSource());
-//			System.out.println("total distance: "+ (distance + next.getDistanceFromSource()));
-			
-			return visit(next, visited, distance + next.getDistanceFromSource());
+			return visit(next.getName(), visited, distance + next.getDistance());
 		}
 	}
 	
