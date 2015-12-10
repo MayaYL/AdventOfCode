@@ -21,8 +21,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  */
 public class FloorCount {
 	
-	public static final String USAGE = String.format("Usage:%njava FloorCount [input]/[file location]");
-	
 	/**
 	 * @param args
 	 *   The string or file path containing Santa's instructions.

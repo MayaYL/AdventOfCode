@@ -14,8 +14,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  * http://adventofcode.com/day/2
  */
 public class WrappingPaperCalculator {
-
-	public static final String USAGE = String.format("Usage:%njava WrappingPaperCalculator [input]/[file location]");
 	
 	/**
 	 * @param args

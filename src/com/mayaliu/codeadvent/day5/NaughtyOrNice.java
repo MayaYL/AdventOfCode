@@ -18,9 +18,7 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  * http://adventofcode.com/day/5
  */
 public class NaughtyOrNice {
-	
-	public static final String USAGE = String.format("Usage:%njava NaughtyOrNice [input]/[file location]");
-	
+		
 	/**
 	 * @param args
 	 *   The string or file path containing the list of words.

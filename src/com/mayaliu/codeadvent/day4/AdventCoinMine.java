@@ -15,8 +15,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  * http://adventofcode.com/day/4
  */
 public class AdventCoinMine {
-
-	public static final String USAGE = String.format("Usage:%njava AdventCoinMine [input]/[file location]");
 	
 	/**
 	 * @param args

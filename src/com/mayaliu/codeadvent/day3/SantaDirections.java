@@ -16,9 +16,7 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  * http://adventofcode.com/day/3
  */
 public class SantaDirections {
-	
-	public static final String USAGE = String.format("Usage:%njava SantaDirections [input]/[file location]");
-	
+		
 	/**
 	 * @param args
 	 *   The string or file path containing Santa's directions.

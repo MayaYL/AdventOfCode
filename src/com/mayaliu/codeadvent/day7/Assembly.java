@@ -23,8 +23,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  */
 public class Assembly {
 	
-	public static final String USAGE = String.format("Usage:%njava Assembly [input]/[file location]");
-	
 	private static WireMap wireMap;
 	private static ArrayList<Connection> solvableConnections;
 	

@@ -18,8 +18,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  */
 public class LightDirections {
 	
-	public static final String USAGE = String.format("Usage:%njava LightDirections [input]/[file location]");
-	
 	/**
 	 * @param args
 	 *   The string or file path containing the list of directions.

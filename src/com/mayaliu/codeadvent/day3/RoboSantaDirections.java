@@ -17,8 +17,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  */
 public class RoboSantaDirections {
 	
-	public static final String USAGE = String.format("Usage:%njava RoboSantaDirections [input]/[file location]");
-	
 	/**
 	 * @param args
 	 *   The string or file path containing Santa's directions.

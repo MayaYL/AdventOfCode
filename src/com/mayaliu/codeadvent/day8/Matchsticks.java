@@ -17,8 +17,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  */
 public class Matchsticks {
 	
-	public static final String USAGE = String.format("Usage:%njava Matchsticks [input]/[file location]");
-	
 	/**
 	 * @param args
 	 *   The string or file path containing the list of instructions.
