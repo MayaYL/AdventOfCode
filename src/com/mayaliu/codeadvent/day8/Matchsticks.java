@@ -1,19 +1,17 @@
 package com.mayaliu.codeadvent.day8;
 
-import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringEscapeUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
- * @author MayaYL
- * 
  * Solution for adventofcode's Day 8 puzzle, December 2015. See 
  * http://adventofcode.com/day/8
+ * 
+ * @author MayaYL
  */
 public class Matchsticks {
 	

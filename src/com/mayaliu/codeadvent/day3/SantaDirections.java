@@ -5,15 +5,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
- * @author MayaYL
- * 
  * Solution for adventofcode's Day 3 puzzle, December 2015. See 
  * http://adventofcode.com/day/3
+ * 
+ * @author MayaYL
  */
 public class SantaDirections {
 		

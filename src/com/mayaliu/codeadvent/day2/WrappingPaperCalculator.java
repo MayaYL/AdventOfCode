@@ -3,15 +3,13 @@ package com.mayaliu.codeadvent.day2;
 import java.io.IOException;
 import java.util.Arrays;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
- * @author MayaYL
- * 
  * Solution for adventofcode's Day 2 puzzle, December 2015. See 
  * http://adventofcode.com/day/2
+ * 
+ * @author MayaYL
  */
 public class WrappingPaperCalculator {
 	

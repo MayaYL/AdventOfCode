@@ -19,7 +19,6 @@ public class Wire {
 		if (!this.isSettled) {
 			this.isSettled = true;
 			this.value = val;
-//			System.out.println("****" + this.name + " is now " + val);
 		}
 		else {
 			String message = String.format("Value has already been set for %s.", this.name);

@@ -8,9 +8,9 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author MayaYL
- * 
  * A utility class handling common tasks such as reading from files. 
+ * 
+ * @author MayaYL
  */
 public class CommonUtils {
 	

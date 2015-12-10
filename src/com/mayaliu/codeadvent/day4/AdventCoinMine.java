@@ -4,15 +4,13 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
- * @author MayaYL
- * 
  * Solution for adventofcode's Day 4 puzzle, December 2015. See 
  * http://adventofcode.com/day/4
+ * 
+ * @author MayaYL
  */
 public class AdventCoinMine {
 	

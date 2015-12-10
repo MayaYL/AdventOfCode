@@ -1,25 +1,17 @@
 package com.mayaliu.codeadvent.day7;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-import org.apache.commons.math3.stat.StatUtils;
 
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
- * @author MayaYL
- * 
  * Solution for adventofcode's Day 7 puzzle, December 2015. See 
  * http://adventofcode.com/day/7
+ * 
+ * @author MayaYL
  */
 public class Assembly {
 	
@@ -48,9 +40,6 @@ public class Assembly {
 		for (String key : keys) {
 			System.out.println(wireMap.get(key).getName() + " is set to " + wireMap.get(key).getValue());
 		}
-		
-//		System.out.println(wireMap.toString());
-//		System.out.format("The final value of wire a is %d.", wireMap.get("a").getValue());
 	}
 	
 	private static void parseInstructions(String[] instructions) {
@@ -80,17 +69,13 @@ public class Assembly {
 	private static void run() throws NumberFormatException, Exception {
 		// Start from solvableInputs...
 		while (!solvableConnections.isEmpty()) {
-//			System.out.println("~~~ solvable connections at the start: \n"+solvableConnections+"\n ~~~");
 			for (int i = 0; i < solvableConnections.size(); i++) {
 				Connection c = solvableConnections.get(i);
-//				System.out.println("output name: " + c.getOutputName());
-				
 				Wire output = wireMap.get(c.getOutputName());
 				if (output == null) {
 					wireMap.put(c.getOutputName(), new Wire(c.getOutputName()));
 					output = wireMap.get(c.getOutputName());
 				}
-//				System.err.println("output obj: "+ output);
 				ArrayList<String> currentInputs = c.getInputNames();
 				switch (currentInputs.size()) {
 				case 1:
@@ -156,7 +141,6 @@ public class Assembly {
 						break;
 					case "RSHIFT":
 						output.setValue((short)((char)value1 >>> (char)value2));
-						//output.setValue((short) (value1 >>> value2));
 						break;						
 					}
 					break;
@@ -171,7 +155,6 @@ public class Assembly {
 					}
 				}
 				solvableConnections.removeAll(Collections.singleton(c));
-//				System.out.println("### remaining values: " + output.getRemainingConnections().values());
 				solvableConnections.addAll(output.getRemainingConnections().values());
 				wireMap.put(c.getOutputName(), output);
 			}

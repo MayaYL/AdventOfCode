@@ -18,8 +18,6 @@ public class Connection {
 		
 		// Parse out the inputs.
 		String[] inputWires = inputAndOutput[0].trim().split(" ");
-		String inputWire1 = "";
-		String inputWire2 = "";
 		
 		switch (inputWires.length) {
 		case 1:
@@ -60,15 +58,6 @@ public class Connection {
 	
 	@Override
 	public String toString() {
-//		StringBuilder sb = new StringBuilder();
-//		sb.append("inputs: ");
-//		sb.append(inputNames.toString());
-//		sb.append("\nOperator: ");
-//		sb.append(operator);
-//		sb.append("\nOutput: ");
-//		sb.append(outputName);
-//		sb.append("\n");
-//		return sb.toString();
 		return this.connectionString;
 	}
 	

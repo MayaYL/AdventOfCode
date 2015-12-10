@@ -2,10 +2,9 @@ package com.mayaliu.codeadvent.day7;
 
 import java.util.HashMap;
 
-import com.mayaliu.codeadvent.day7.Connection;
-import com.mayaliu.codeadvent.day7.Wire;
-
 public class WireMap extends HashMap<String, Wire> {
+	private static final long serialVersionUID = 1L;
+
 	public void addInstruction(String key, Connection val) {
 		Wire w = this.get(key);
 		

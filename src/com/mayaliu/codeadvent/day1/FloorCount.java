@@ -2,13 +2,9 @@ package com.mayaliu.codeadvent.day1;
 
 import java.io.IOException;
 
-import org.apache.commons.lang3.StringUtils;
-
 import com.mayaliu.codeadvent.common.CommonUtils;
 
-/**
- * @author MayaYL
- * 
+/** 
  * Solution for adventofcode's Day 1 puzzle, December 2015. See 
  * http://adventofcode.com/day/1.
  * 
@@ -18,6 +14,7 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  * indicates both where Santa is, as well as the first time Santa went into the
  * basement.
  *
+ * @author MayaYL
  */
 public class FloorCount {
 	

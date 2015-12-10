@@ -5,16 +5,15 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.math3.stat.StatUtils;
 
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
- * @author MayaYL
- * 
  * Solution for adventofcode's Day 6 puzzle, December 2015. See 
  * http://adventofcode.com/day/6
+ * 
+ * @author MayaYL
  */
 public class LightDirections {
 	

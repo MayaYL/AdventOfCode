@@ -3,10 +3,10 @@ package com.mayaliu.codeadvent.day10;
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
- * @author MayaYL
- * 
  * Solution for adventofcode's Day 10 puzzle, December 2015. See 
  * http://adventofcode.com/day/10
+ * 
+ * @author MayaYL
  */
 public class LookSay {
 
