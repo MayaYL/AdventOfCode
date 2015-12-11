@@ -20,6 +20,9 @@ public class Password {
 	
 	/**
 	 * Checks the validity of the given password.
+	 * 
+	 * Fastest validity checks are performed first, so the conditions are not
+	 * checked in order.
 	 *   
 	 * @return
 	 *   Whether the password is valid.
@@ -29,6 +32,11 @@ public class Password {
 		
 		// Base condition: passwords must be REQUIRED_LENGTH characters long.
 		if (password.length() != REQUIRED_LENGTH) {
+			return false;
+		}
+		
+		// Condition 2: passwords may not contain the letters i, o, or l.
+		if (password.contains("i") || password.contains("o") || password.contains("l")) {
 			return false;
 		}
 		
@@ -47,11 +55,6 @@ public class Password {
 			}
 		}
 		if (!containsIncreasingSequence) {
-			return false;
-		}
-		
-		// Condition 2: passwords may not contain the letters i, o, or l.
-		if (password.contains("i") || password.contains("o") || password.contains("l")) {
 			return false;
 		}
 		
