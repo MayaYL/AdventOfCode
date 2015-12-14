@@ -2,7 +2,6 @@ package com.mayaliu.codeadvent.day13;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.PriorityQueue;
 
 import org.apache.commons.collections4.iterators.PermutationIterator;
 
@@ -16,8 +15,6 @@ import com.mayaliu.codeadvent.common.CommonUtils;
  */
 public class SeatingArrangement {
 	private static HashMap<String, HashMap<String, Integer>> guests = new HashMap<String, HashMap<String, Integer>>();
-	private static HashMap<String, Guest> guestData = new HashMap<String, Guest>();
-	private static String lastGuestSeated;
 	
 	/**
 	 * @param args

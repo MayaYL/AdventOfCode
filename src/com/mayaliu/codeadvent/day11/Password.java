@@ -78,7 +78,7 @@ public class Password {
 	 */
 	public void increment() {
 		char[] passwordArray = this.password.toCharArray();
-		this.increment(passwordArray, this.REQUIRED_LENGTH - 1);
+		this.increment(passwordArray, Password.REQUIRED_LENGTH - 1);
 	}
 	
 	/**

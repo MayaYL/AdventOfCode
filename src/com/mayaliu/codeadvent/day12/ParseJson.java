@@ -1,12 +1,15 @@
 package com.mayaliu.codeadvent.day12;
 
-import java.util.ArrayList;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.google.gson.*;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import com.mayaliu.codeadvent.common.CommonUtils;
 
 /**
@@ -26,7 +29,6 @@ public class ParseJson {
 	 */
 	public static void main(String[] args) throws NumberFormatException, Exception {
 		String json = CommonUtils.processInput(args, "ParseJson");
-		ArrayList<String> allParts = new ArrayList<String>();
 		int sum = sumIntegers(json);
 
 		System.out.format("The sum of all integers in the json file is %d.\n", sum);

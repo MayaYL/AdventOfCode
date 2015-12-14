@@ -1,7 +1,6 @@
 package com.mayaliu.codeadvent.day11;
 
 import java.io.IOException;
-import java.util.Arrays;
 
 import com.mayaliu.codeadvent.common.CommonUtils;
 
