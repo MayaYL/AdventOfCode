@@ -101,38 +101,14 @@ public class ReindeerRace {
 			this.score = 0;
 		}
 
-		public String getName() {
-			return name;
-		}
-
-		public void setName(String name) {
-			this.name = name;
-		}
-
-		public int getSpeed() {
-			return speed;
-		}
-
-		public void setSpeed(int speed) {
-			this.speed = speed;
-		}
-		
 		public int getDuration() {
 			return duration;
-		}
-
-		public void setDuration(int duration) {
-			this.duration = duration;
 		}
 
 		public int getRest() {
 			return rest;
 		}
 
-		public void setRest(int rest) {
-			this.rest = rest;
-		}
-		
 		public void fly(int seconds) {
 			this.distance += seconds * speed;
 		}
