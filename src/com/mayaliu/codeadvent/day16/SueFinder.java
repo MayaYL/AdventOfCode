@@ -1,5 +1,6 @@
 package com.mayaliu.codeadvent.day16;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,17 +25,65 @@ public class SueFinder {
 	public static void main(String[] args) throws NumberFormatException, Exception {
 		String sueData = CommonUtils.processInput(args, "SueFinder");
 		String[] sueList = sueData.split("\n");
+		HashMap<String, Integer> expectedValues = new HashMap<String, Integer>();
+		expectedValues.put("children", 3);
+		expectedValues.put("cats", 7);
+		expectedValues.put("samoyeds", 2);
+		expectedValues.put("pomeranians", 3);
+		expectedValues.put("akitas", null);
+		expectedValues.put("vizslas", null);
+		expectedValues.put("goldfish", 5);
+		expectedValues.put("trees", 3);
+		expectedValues.put("cars", 2);
+		expectedValues.put("perfumes", 1);
+		ArrayList<Sue> possibles = new ArrayList<Sue>();
 		
 		for (String sue : sueList) {
 			// Find the ID. The very first number in the line will be the ID.
-			Pattern p = Pattern.compile("[0-9]+");
-			Matcher m = p.matcher(sue);
-			m.find();
-			Sue s = new Sue(Integer.parseInt(m.group()));
+			Pattern idPattern = Pattern.compile("[0-9]+");
+			Matcher idMatcher = idPattern.matcher(sue);
+			idMatcher.find();
+			Sue s = new Sue(Integer.parseInt(idMatcher.group()));
 			
 			// Find each of the possible properties.
-			// Pattern: goldfish: 9, (string): (int)
+			// Pattern: "goldfish: 9," which is (string): (int)
+			Pattern propertyPattern = Pattern.compile("[a-z]+: [0-9]+");
+			Matcher propertyMatcher = propertyPattern.matcher(sue);
+			boolean matched = false;
+			while (propertyMatcher.find()) {
+				String data = propertyMatcher.group();
+				String[] dataParts = data.split(": ");
+				String propertyName = dataParts[0];
+				int propertyValue = Integer.parseInt(dataParts[1]);
+				if (expectedValues.get(propertyName) == null) {
+					if (propertyValue != 0) {
+						continue;
+					}
+				}
+				else if (Integer.valueOf(expectedValues.get(propertyName)) != propertyValue) {
+					continue;
+				}
+//				if (!(expectedValues.get(propertyName) == null && propertyValue == 0)
+//						&& !(Integer.valueOf(expectedValues.get(propertyName)) == (propertyValue))) {
+//					continue;
+//				}
+				matched = true;
+				s.add(propertyName, propertyValue);
+			}
+			if (matched) {
+				possibles.add(s);
+			}
 			
+			System.out.format("Sue number %d sent the package.\n", s.getId());
+			
+			
+//			System.out.println(s.getProperties().keySet());
+//			for (String str : s.getProperties().keySet()) {
+//
+//				System.out.print(s.getProperties().get(str)+", ");
+//			}
+//			System.out.print(s.getProperties().get("pomeranians"));
+//			System.out.println();
 		}
 	}
 
@@ -60,10 +109,10 @@ public class SueFinder {
 		public HashMap<String, Integer> getProperties() {
 			return this.properties;
 		}
-//
-//		public int getId() {
-//			return id;
-//		}
+
+		public int getId() {
+			return id;
+		}
 //
 //		public void setId(int id) {
 //			this.id = id;
