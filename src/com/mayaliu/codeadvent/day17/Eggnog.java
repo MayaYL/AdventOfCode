@@ -22,6 +22,6 @@ public class Eggnog {
 	 * @throws NumberFormatException 
 	 */
 	public static void main(String[] args) throws NumberFormatException, Exception {
-		String containerData = CommonUtils.processInput(args, "EggNog"");
+		String containerData = CommonUtils.processInput(args, "EggNog");
 	}
 }

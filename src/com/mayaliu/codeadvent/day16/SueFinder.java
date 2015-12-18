@@ -74,7 +74,7 @@ public class SueFinder {
 				possibles.add(s);
 			}
 			
-			System.out.format("Sue number %d sent the package.\n", s.getId());
+//			System.out.format("Sue number %d sent the package.\n", s.getId());
 			
 			
 //			System.out.println(s.getProperties().keySet());
@@ -84,6 +84,22 @@ public class SueFinder {
 //			}
 //			System.out.print(s.getProperties().get("pomeranians"));
 //			System.out.println();
+		}
+		for (String property : expectedValues.keySet()) {
+			for (Sue s : possibles) {
+				HashMap<String, Integer> sueProperties = s.getProperties();
+				if (sueProperties.containsKey(property)) {
+					if (sueProperties.get(property) == expectedValues.get(property)) {
+						
+					}
+					else {
+						continue;
+					}
+				}
+				else {
+					continue;
+				}
+			}
 		}
 	}
 
