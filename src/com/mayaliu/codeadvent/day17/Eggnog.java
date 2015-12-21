@@ -1,14 +1,8 @@
 package com.mayaliu.codeadvent.day17;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import org.apache.commons.collections4.iterators.PermutationIterator;
 
 import com.mayaliu.codeadvent.common.CommonUtils;
 
@@ -23,7 +17,7 @@ public class Eggnog {
 	
 	/**
 	 * @param args
-	 *   The string or file path containing the list of Aunt Sues.
+	 *   The string or file path containing the list of container sizes.
 	 *   
 	 * @throws Exception 
 	 * @throws NumberFormatException 
