@@ -10,14 +10,7 @@ public class ElfHouses {
 	
 	public static final int NUMBER_OF_PRESENTS = 36000000;
 	
-	/**
-	 * @param args
-	 *   The string or file path containing the light data.
-	 *   
-	 * @throws Exception 
-	 * @throws NumberFormatException 
-	 */
-	public static void main(String[] args) throws NumberFormatException, Exception {
+	public static void main(String[] args) {
 		// No inputs required! Don't need CommonUtils to handle anything.
 			
 		for (int i = 1; ; i++) {

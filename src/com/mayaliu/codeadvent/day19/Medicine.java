@@ -18,12 +18,11 @@ public class Medicine {
 	
 	/**
 	 * @param args
-	 *   The string or file path containing the light data.
+	 *   The string or file path containing the medicine data.
 	 *   
-	 * @throws Exception 
-	 * @throws NumberFormatException 
+	 * @throws Exception
 	 */
-	public static void main(String[] args) throws NumberFormatException, Exception {
+	public static void main(String[] args) throws Exception {
 		String input = CommonUtils.processInput(args, "Medicine");
 		HashMap<String, ArrayList<String>> substitutions = new HashMap<String, ArrayList<String>>();
 		HashSet<String> distinctMolecules = new HashSet<String>();
@@ -46,7 +45,6 @@ public class Medicine {
 		
 		// Parse the input and look for the substitutatble elements.
 		for (String key : substitutions.keySet()) {
-			String medicineCopy = medicine;
 			Pattern keyPattern = Pattern.compile(key);
 			Matcher keyMatcher = keyPattern.matcher(medicine);
 			

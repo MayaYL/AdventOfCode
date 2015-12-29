@@ -21,14 +21,7 @@ public class BossFight {
 	private static ArrayList<Item> armors = new ArrayList<Item>();
 	private static ArrayList<Item> rings = new ArrayList<Item>();
 	
-	/**
-	 * @param args
-	 *   The string or file path containing the light data.
-	 *   
-	 * @throws Exception 
-	 * @throws NumberFormatException 
-	 */
-	public static void main(String[] args) throws NumberFormatException, Exception {
+	public static void main(String[] args) {
 		// No inputs required! Don't need CommonUtils to handle anything.
 		
 		// Weapons.
