@@ -97,13 +97,12 @@ public class BossFight {
 
 		int damageDealtByPlayer = weapon.getDamage() + combinedRings.getDamage() - BOSS_ARMOR;
 		int damageDealtByBoss = BOSS_DAMAGE - armor.getArmor() - combinedRings.getArmor();
+		// The attacker always does at least one damage.
+		damageDealtByPlayer = damageDealtByPlayer <= 0 ? 1 : damageDealtByPlayer;
+		damageDealtByBoss = damageDealtByBoss <= 0 ? 1 : damageDealtByBoss;
 		int mostDamageDealt = damageDealtByPlayer > damageDealtByBoss? damageDealtByPlayer: damageDealtByBoss;
 
 		int numTurns = leastHitpoint/mostDamageDealt;
-		
-		if (damageDealtByBoss <= 0) {
-			return true;
-		}
 		
 		if (damageDealtByPlayer <= 0) {
 			return false;
